@@ -18,6 +18,8 @@ class RakePlus
     /** @var array */
     private $phrase_scores = [];
 
+    private $word_scores = [];
+
     /** @var int */
     private $min_length = 0;
 
@@ -192,7 +194,7 @@ class RakePlus
                 $sentences = $this->splitSentences($text);
                 $phrases = $this->getPhrases($sentences, $this->pattern);
             }
-            $word_scores = $this->calcWordScores($phrases);
+            $this->word_scores = $this->calcWordScores($phrases);
             $this->phrase_scores = $this->calcPhraseScores($phrases, $word_scores);
         }
 
@@ -266,6 +268,17 @@ class RakePlus
             arsort($this->phrase_scores);
         } else {
             asort($this->phrase_scores);
+        }
+
+        return $this;
+    }
+
+    public function sortWordsByScore($order = self::ORDER_ASC)
+    {
+        if ($order == self::ORDER_DESC) {
+            arsort($this->word_scores);
+        } else {
+            asort($this->word_scores);
         }
 
         return $this;
