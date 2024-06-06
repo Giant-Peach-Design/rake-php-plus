@@ -194,7 +194,7 @@ class RakePlus
                 $sentences = $this->splitSentences($text);
                 $phrases = $this->getPhrases($sentences, $this->pattern);
             }
-            $this->word_scores = $this->calcWordScores($phrases);
+            $word_scores = $this->word_scores = $this->calcWordScores($phrases);
             $this->phrase_scores = $this->calcPhraseScores($phrases, $word_scores);
         }
 
