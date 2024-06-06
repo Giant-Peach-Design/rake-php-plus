@@ -222,6 +222,11 @@ class RakePlus
         return $this->phrase_scores;
     }
 
+    public function wordScores()
+    {
+        return $this->word_scores;
+    }
+
     /**
      * Returns only the unique keywords within the
      * phrases instead of the full phrases itself.
